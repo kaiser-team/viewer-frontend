@@ -20,6 +20,13 @@
       .option {
         padding: 10px 15px;
         cursor: pointer;
+        color: white;
       }
+      .option:hover{
+        text-decoration: underline;
+      }
+    }
+    .logo-container{
+      color: white;
     }
 }
