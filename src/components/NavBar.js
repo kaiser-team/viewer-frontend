@@ -39,6 +39,7 @@ class NavBar extends React.Component {
                 }}
                 >XNAT</button> : <span>XNAT is unavailable</span>
                 }
+
                 {
                 this.state.dcm4cheeReachable === true ?
                 <button
@@ -47,6 +48,7 @@ class NavBar extends React.Component {
                 }}
                 >DCM4CHEE</button> : <span>DCM4CHEE is unavailable</span>
                 }
+                
             </div>
         )
     };
