@@ -25,13 +25,17 @@ class NavBar extends React.Component {
     }
 
     async componentDidMount(){
-       const xnat =  await xnatIsReachable();
-       const dcm4chee = await dcm4cheeIsReachable();
+        console.log('Alright ill check if its up');
+        await this.checkReachable()
+    }
 
-       await this.setStateAsync({
-           xnatReachable: xnat,
-           dcm4cheeReachable: dcm4chee
-       });
+    async checkReachable() {
+        const xnat = await xnatIsReachable();
+        const dcm4chee = await dcm4cheeIsReachable();
+        await this.setStateAsync({
+            xnatReachable: xnat,
+            dcm4cheeReachable: dcm4chee
+        });
     }
 
     render() {
@@ -42,24 +46,24 @@ class NavBar extends React.Component {
                 </div>
                 <div className='options'>
                     <div className='options'>
-                        <div className='option'>
+                        <div className='option' onClick={() => this.checkReachable()}>
                             {this.state.xnatReachable === true ? <CheckLogo/> : <LoadingLogo/>}
                         </div>
                         <a
                         target = '_blank'
                         rel='noopener noreferrer'
-                        href='https://localhost:80'
+                        href='http://localhost:80'
                         className='option'
                         >XNAT</a>
                     </div>
                     <div className='options'>
-                        <div className='option'>
+                        <div className='option' onClick={()=> this.checkReachable()}>
                             {this.state.dcm4cheeReachable === true ? <CheckLogo/> : <LoadingLogo/>}
                         </div>
                         <a
                         target = '_blank'
                         rel='noopener noreferrer'
-                        href='https://localhost:8080/dcm4chee-arc/ui2'
+                        href='http://localhost:8080/dcm4chee-arc/ui2'
                         className='option'
                         >DCM4CHEE</a>
                     </div>

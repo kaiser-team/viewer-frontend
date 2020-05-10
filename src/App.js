@@ -1,4 +1,4 @@
-import React, {State} from 'react';
+import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import Table from './components/Table';
