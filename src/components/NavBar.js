@@ -1,5 +1,11 @@
 import React from 'react';
 import { xnatIsReachable, dcm4cheeIsReachable } from '../utils/pingServices';
+import {ReactComponent as CheckLogo} from '../assets/checkMark/checkMark.svg';
+import {ReactComponent as LoadingLogo} from '../assets/loading/loading.svg';
+
+import './NavBar.scss';
+import '../assets/checkMark/checkMark.css';
+import '../assets/loading/loading.scss';
 
 class NavBar extends React.Component {
 
@@ -31,22 +37,33 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className='nav-bar'>
-                {
-                this.state.xnatReachable === true ? 
-                <button 
-                onClick={() => {
-                    window.open('http://localhost:80', '_blank')
-                }}
-                >XNAT</button> : <span>XNAT is unavailable</span>
-                }
-                {
-                this.state.dcm4cheeReachable === true ?
-                <button
-                onClick={() => {
-                    window.open('http://localhost:8080/dcm4chee-arc/ui2', '_blank')
-                }}
-                >DCM4CHEE</button> : <span>DCM4CHEE is unavailable</span>
-                }
+                <div className='logo-container'>
+                    LOGO
+                </div>
+                <div className='options'>
+                    <div className='options'>
+                        <div className='option'>
+                            {this.state.xnatReachable === true ? <CheckLogo/> : <LoadingLogo/>}
+                        </div>
+                        <a
+                        target = '_blank'
+                        rel='noopener noreferrer'
+                        href='https://localhost:80'
+                        className='option'
+                        >XNAT</a>
+                    </div>
+                    <div className='options'>
+                        <div className='option'>
+                            {this.state.dcm4cheeReachable === true ? <CheckLogo/> : <LoadingLogo/>}
+                        </div>
+                        <a
+                        target = '_blank'
+                        rel='noopener noreferrer'
+                        href='https://localhost:8080/dcm4chee-arc/ui2'
+                        className='option'
+                        >DCM4CHEE</a>
+                    </div>
+                </div>
             </div>
         )
     };
