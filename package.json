@@ -10,6 +10,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "react-viewerbase": "^0.17.6",
     "set-cookie-parser": "^2.4.5"
   },
   "scripts": {

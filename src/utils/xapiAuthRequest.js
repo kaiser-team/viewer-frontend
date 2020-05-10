@@ -27,6 +27,13 @@ axios.post(baseURL + '/data/JSESSION', {
         console.log(error)
     })
 
+axios.post(baseURL + '/data/projects', {
+        auth: user,
+        agentOptions,
+            
+    })
+    .then(function(response))
+
 // axios.get(baseURL + '/xapi/users', {
 //         agentOptions,
 //         auth: user
