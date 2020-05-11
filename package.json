@@ -6,13 +6,15 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "fetch": "^1.1.0",
     "is-reachable": "^4.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-viewerbase": "^0.17.6",
+    "request": "^2.88.2",
     "sass": "^1.26.5",
-    "set-cookie-parser": "^2.4.5"
+    "xnat-rest": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
