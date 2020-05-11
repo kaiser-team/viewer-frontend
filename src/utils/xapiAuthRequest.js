@@ -1,50 +1,30 @@
-const axios = require('axios');
-var setCookie = require('set-cookie-parser');
+const xapi = require('../xapi')
 
-const baseURL = 'http://localhost'
+xapi.setXnatUrl('http://localhost:80')
 
 const user = {
-    'username': 'admin',
-    'password': 'admin'
-};
+    username: 'admin',
+    password: 'admin'
+}
 
-const agentOptions = {
-    rejectUnauthorized: false
-};
+async function getStuffDone() {
+    await xapi.login(user)
+    console.log('Logged in succesfully')
 
-axios.post(baseURL + '/data/JSESSION', {
-        agentOptions,
-        
-    })
-    .then(function(response){
-       var cookies = setCookie.parse(response, {
-           decodeValues: true
-       })
-       console.log(cookies[0]['name'])
-       console.log(response.data)
-    })
-    .catch(function(error){
-        console.log(error)
-    })
+    const response = await xapi.getProjects()
+    console.log(response.ResultSet)
+    const { ID } = response.ResultSet.Result[0];
 
-axios.post(baseURL + '/data/projects', {
-        auth: user,
-        agentOptions,
-            
-    })
-    .then(function(response))
+    const experiments = await xapi.getExperiments(ID);
+    console.log(experiments)
 
-// axios.get(baseURL + '/xapi/users', {
-//         agentOptions,
-//         auth: user
-//     })
-//     .then(function (response) {
-//         console.log(response.data)
-//     })
-//     .catch(function(error) {
-//         console.log(error)
-//         console.log('ERROR')
-//     })
+    const subjects = await xapi.getSubjectByProject(ID);
+    console.log(subjects)
 
+    const scans = await xapi.getScans(ID, '1', 'XNAT_E00001')
+    console.log(scans)
 
+    xapi.logout()
+}
 
+getStuffDone()

@@ -1,11 +1,12 @@
+import config from '../config/servicesConfig';
 const isReachable = require('is-reachable')
 
 const xnatIsReachable = async () => {
-    return await isReachable('http://localhost:80')
+    return await isReachable(config.xnatURL)
 }
 
 const dcm4cheeIsReachable = async () =>{
-    return await isReachable('http://localhost:8080/dcm4chee/ui2')
+    return await isReachable(config.dcm4cheeURL)
 }
 
 export {
